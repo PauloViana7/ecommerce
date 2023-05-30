@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario | Cadastro</title>
+    
+</head>
+<body>
+    <div class="box">
+        <form method="POST" enctype="application/json" action="//127.0.0.1:3000/createUser" >
+          <fieldset>
+            <legend><b>Formulario de Clientes</b></legend>
+            <br>
+            <div class="inputBox">
+              <input type="text" name="name" class="inputUser" required>
+              <label for="name" class="labelInput">Nome Completo</label>
+            </div>
+            <br>
+            <div class="inputBox">
+              <input type="text" name="email" class="inputUser" required>
+              <label for="email" class="labelInput">Email</label>
+            </div>
+            <br>
+            <div class="inputBox">
+              <input type="password" name="password" class="inputUser" required>
+              <label for="password" class="labelInput">Senha</label>
+            </div>
+            <br>
+            <input type="submit" name="submit">
+          </fieldset>
+        </form>
+      </div>
+</body>
+</html>

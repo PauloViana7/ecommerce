@@ -1,9 +1,5 @@
 
 
-Rotas básicas: Comece definindo as rotas básicas da sua API, como rota para obter todos os produtos, obter um produto específico, criar um novo produto, atualizar um produto existente e excluir um produto. Isso permite que você crie a estrutura inicial da sua API e teste o funcionamento básico sem autenticação.
-
-Banco de dados: Conecte-se ao seu banco de dados MySQL e implemente a lógica para interagir com os dados relacionados aos produtos nas rotas definidas anteriormente. Você pode usar bibliotecas como "mysql" ou "mysql2" para interagir com o banco de dados.
-
 Autenticação: Após ter as rotas básicas funcionando corretamente, implemente a autenticação usando JWT. Defina rotas para registro de usuário e login. Quando um usuário faz login com sucesso, gere um token JWT que será usado para autenticar as solicitações subsequentes.
 
 Proteção de rotas: Agora, atualize suas rotas existentes para exigir autenticação. Verifique o token JWT nas solicitações recebidas para garantir que o usuário esteja autenticado antes de permitir o acesso às rotas protegidas.

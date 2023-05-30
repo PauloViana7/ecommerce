@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 // Rota para obter todos os produtos
 router.get('/products', (req, res) => {
   // Lógica para buscar todos os produtos no banco de dados

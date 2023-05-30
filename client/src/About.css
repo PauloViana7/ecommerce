@@ -1,0 +1,21 @@
+.box-about {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+.text-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem;
+}
+
+.text-about h1 {
+    color: var(--color-main-one);
+    padding: 1rem;
+}
+
+.text-about p {
+    padding: .7rem;
+}

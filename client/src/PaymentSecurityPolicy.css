@@ -1,0 +1,51 @@
+.payment-security-policy {
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--color-main-tree);
+    border-radius: .5rem;
+  }
+  
+  .payment-security-policy h2 {
+    font-size: 1.5rem;
+    margin: 1rem;
+    color: var(--color-main-one);
+  }
+
+  .payment-security-policy h2 i {
+    padding: .5rem;
+  }
+  
+  .payment-security-policy ul {
+    list-style: none;
+    color: var(--color-main-five);
+    font-weight: bold;
+  }
+  
+  .payment-security-policy li {
+    margin: 1rem;
+  }
+  
+  .payment-security-policy a {
+    color: var(--color-main-six);
+    text-decoration: none;
+  }
+  
+  .payment-security-policy a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 950px) {
+
+    .payment-security-policy h2 {
+      font-size: 1.2rem;
+    }
+
+    .payment-security-policy ul {
+      font-size: .8rem;
+    }
+
+    .payment-security-policy p {
+      font-size: .9rem;
+    }
+
+  }

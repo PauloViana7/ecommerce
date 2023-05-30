@@ -1,0 +1,169 @@
+ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+    
+  
+  #header {
+    position: sticky;
+    top: 0;
+    height: 5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(var(--color-main-two), var(--color-main-tree));
+    z-index: 1001;
+  }
+
+  #logo {
+    display: flex;
+    margin: 0 7rem;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+  }
+
+  #logo img {
+    height: 5rem;
+  }
+
+  .text-logo {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .text-logo b {
+    margin: 0 2rem;
+    padding: .5rem;
+    color: var(--color-main-four);
+    font-size: 1.7rem;
+  }
+
+  .text-logo p {
+    margin: 0 5rem;
+    color: var(--color-main-one);
+    font-size: 1rem;
+  }
+  
+  #header a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  #menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: .5rem;
+    padding: 3rem;
+  }
+  
+  #menu a {
+    color: var(--color-main-one);
+    display: block;
+    padding: .5rem;
+    left: 100px;
+  }
+  
+  #menu a:hover {
+    color: var(--color-main-four);
+  }
+
+  #menu i {
+    display: flex;
+    align-items: flex-end;
+    font-size: 2rem;
+  }
+
+  #menu b {
+    font-size: 1rem;
+  }
+
+
+  @media (max-width: 950px) {
+    #menu {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 5rem;
+      right: 0;
+      background-image: linear-gradient(var(--color-main-tree), var(--color-main-two));
+      height: 0;
+      z-index: 1000;
+      transition: .6s;
+      visibility: hidden;
+      overflow-y: hidden;
+    }
+  
+    #nav.active #menu {
+      height: calc(100vh - 5rem);
+      visibility: visible;
+      overflow-y: auto;
+    }
+  
+    #menu a {
+      padding: 1rem 0;
+      margin: 0 1rem;
+      border-bottom: 2px solid rgba(0, 0, 0, .05);
+    }
+  
+    #btn-mobile {
+      display: flex;
+      padding: .5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      gap: .5rem;
+    }
+  
+    #hotdog {
+      color: var(--color-main-four);
+      border-top: .1rem solid;
+      width: 1.3rem;
+    }
+  
+    #hotdog::after {
+      content: '';
+      display: block;
+      width: 1.3rem;
+      height: .1rem;
+      background: currentColor;
+      margin-top: .5rem;
+      transition: .3s;
+      position: relative;
+    }
+  
+    #nav.active #hotdog {
+      transform: rotate(50deg);
+    }
+  
+    #nav.active #hotdog::after {
+      transform: rotate(80deg);
+      top: -.5rem;
+    }
+
+    #logo {
+      margin: 0 1rem;
+    }
+
+    #logo img {
+      height: 3rem;
+    }
+
+    .text-logo b {
+      margin: 0 1rem;
+      font-size: 1.4rem;
+    }
+  
+    .text-logo p {
+      margin: 0 3rem;
+      font-size: .8rem;
+    }
+}

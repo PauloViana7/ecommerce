@@ -1,0 +1,47 @@
+:root {
+
+  --color-main-one: #2ac0d1;
+  --color-main-two: #afbed2;
+  --color-main-tree: #FFFFFF;
+  --color-main-four: #121212;
+  --color-main-five: #17db89;
+  --color-main-six: #b80220;
+
+  --background-one: #CCCCCC;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-main-one) var(--color-main-two);
+}
+
+/*Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: .5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-main-tree);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-main-one);
+  border-radius: 1.2rem;
+  border: .1rem solid var(--color-main-tree);
+}
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
