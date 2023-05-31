@@ -1,5 +1,0 @@
-
-
-Autenticação: Após ter as rotas básicas funcionando corretamente, implemente a autenticação usando JWT. Defina rotas para registro de usuário e login. Quando um usuário faz login com sucesso, gere um token JWT que será usado para autenticar as solicitações subsequentes.
-
-Proteção de rotas: Agora, atualize suas rotas existentes para exigir autenticação. Verifique o token JWT nas solicitações recebidas para garantir que o usuário esteja autenticado antes de permitir o acesso às rotas protegidas.
