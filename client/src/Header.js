@@ -96,7 +96,7 @@ function App() {
             </a>
           </li>
           <li>
-            <a id="click-mobile-login" href="Login">
+            <a id="click-mobile-login" href="AuthForm">
               Entrar{" "}
             </a>
           </li>

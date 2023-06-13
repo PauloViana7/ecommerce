@@ -1,0 +1,20 @@
+.privacy-policy-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--background-one);
+    color: var(--color-main-four);
+  }
+  
+  .privacy-policy-container h1 {
+    display: flex;
+    justify-content: center;
+    padding: 1.2rem;
+    color: var(--color-main-one);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+ 

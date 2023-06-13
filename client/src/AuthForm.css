@@ -1,0 +1,53 @@
+.login {
+  max-width: 25rem;
+  margin: 9rem auto;
+  padding: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0.06rem solid var(--color-main-two);
+  border-radius: 0.3rem;
+  text-align: center;
+}
+
+.login h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  color: var(--color-main-four);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: var(--color-main-four);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 0.06rem solid var(--color-main-two);
+  border-radius: 0.3rem;
+  background-color: var(--color-main-two);
+  color: var(--color-main-four);
+}
+
+.login button[type="submit"] {
+  display: block;
+  margin: 1.2rem auto 0;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-main-one);
+  color: var(--color-main-tree);
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.toggle-form-link {
+  margin-top: 1.2rem;
+  color: var(--color-main-one);
+  cursor: pointer;
+}

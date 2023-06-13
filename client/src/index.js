@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Header';
+import AuthForm from './AuthForm';
 import Home from './Home';
 import ProductInfo from './ProductInfo';
 import About  from './About';
+import Contact from './Contact';
+import PrivacyPolicy from './PrivacyPolicy';
 import Footer from './Footer';
 import {
   createBrowserRouter,
@@ -26,6 +29,18 @@ const router = createBrowserRouter([
   {
     path: "/About",
     element: <About />,
+  },
+  {
+    path: "/Contact",
+    element: <Contact />,
+  },
+  {
+    path: "/AuthForm",
+    element: <AuthForm />,
+  },
+  {
+    path: "/PrivacyPolicy",
+    element: <PrivacyPolicy />,
   },
 ]);
 

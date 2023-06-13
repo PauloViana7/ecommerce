@@ -17,7 +17,7 @@ const PaymentSecurityPolicy = () => {
       <p>Usamos certificados SSL para criptografar as informações transmitidas pelo site e mantemos as informações do cliente seguras em nosso banco de dados.</p>
 
       <h2><i className='bx bxs-spreadsheet'></i> Política de Privacidade</h2>
-      <p>Leia nossa <a href="/politica-de-privacidade"> Política de Privacidade</a> para saber mais sobre como coletamos, usamos e protegemos suas informações pessoais.</p>
+      <p>Leia nossa <a href="/PrivacyPolicy"> Política de Privacidade</a> para saber mais sobre como coletamos, usamos e protegemos suas informações pessoais.</p>
     </div>
   );
 };

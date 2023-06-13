@@ -21,21 +21,36 @@ function Home() {
             <br />
             <div className='box-card'>
                 <ul>
-                    {products.map(product => (
-                        <li key={product.id}>
-                            <h2>{product.title}</h2>
-                            <img src={product.image} alt={product.title}></img>
-                            <b>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
-                            <Link to={`/ProductInfo?${product.id}`}> <button type="submit" className='btn-buy' name="btn-buy">Comprar</button> </Link>
-                            <br />
-                        </li>
-                    ))}
+                    {products.length > 0 ? (
+                        products.map(product => (
+                            <li key={product.id}>
+                                <h2>{product.title}</h2>
+                                <img src={product.image} alt={product.title}></img>
+                                {product.price && (
+                                    <b>
+                                        {product.price.toLocaleString('pt-br', {
+                                            style: 'currency',
+                                            currency: 'BRL'
+                                        })}
+                                    </b>
+                                )}
+                                <Link to={`/ProductInfo?${product.id}`}>
+                                    <button type="submit" className='btn-buy' name="btn-buy">
+                                        Comprar
+                                    </button>
+                                </Link>
+                                <br />
+                            </li>
+                        ))
+                    ) : (
+                        <p>Carregando...</p>
+                    )}
                 </ul>
             </div>
             <PaymentSecurityPolicy />
         </div>
-
     );
-}
+};
+
 
 export default Home;
