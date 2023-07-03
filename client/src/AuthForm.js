@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AuthForm.css';
+import './Header';
 
 const Login = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -8,10 +9,44 @@ const Login = () => {
     setIsLoginForm(!isLoginForm);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Implementar lógica de autenticação ou registro aqui
+
+    const form = event.target;
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      password: form.password.value,
+    };
+
+    const endpoint = isLoginForm ? 'http://localhost:3001/login' : 'http://localhost:3001/createUser';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+    
+      if (response.status === 200) {
+        const data = await response.json();
+
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('userName', data.userName);
+
+        window.location.href = '/';
+         
+      } else {
+        console.log('Erro no login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
 
   return (
     <div className="login">

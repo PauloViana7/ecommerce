@@ -5,10 +5,12 @@ import Header from './Header';
 import AuthForm from './AuthForm';
 import Home from './Home';
 import ProductInfo from './ProductInfo';
+import Cart from './Cart';
 import About  from './About';
 import Contact from './Contact';
 import PrivacyPolicy from './PrivacyPolicy';
 import Footer from './Footer';
+import ProductForm from './ProductForm';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
     element: <ProductInfo />,
   },
   {
+    path: "/Cart",
+    element: <Cart />,
+  },
+  {
     path: "/About",
     element: <About />,
   },
@@ -41,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/PrivacyPolicy",
     element: <PrivacyPolicy />,
+  },
+  {
+    path: "/ProductForm",
+    element: <ProductForm />,
   },
 ]);
 

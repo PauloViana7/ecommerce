@@ -2,10 +2,13 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
 
-//app.use(express.json());
-app.use(express.urlencoded());
+const port = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const cors = require('cors');
 
 const mysql = require('mysql');
 
@@ -35,6 +38,8 @@ app.get('/', (req, res) => {
   res.send('API está funcionando!');
 });
 
+app.use(cors());
+
 app.post('/createUser', (req, res) => {
 
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
@@ -53,6 +58,45 @@ app.post('/createUser', (req, res) => {
   });
   res.send('Pagina de criar user');
 });
+
+
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  connection.query('SELECT * FROM users WHERE email = ?', email, (err, results) => {
+    if (err) throw err;
+
+    if (results.length === 0) {
+      console.log('---> Usuário não encontrado');
+      res.status(401).send('Usuário não encontrado');
+    } else {
+      const user = results[0];
+
+
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) throw err;
+
+        if (result) {
+          const { id, name } = user;
+
+          console.log('---> Login realizado com sucesso! com ID:', user.id);
+          res.send({
+            message: 'Login realizado com sucesso!',
+            userId: id,
+            userName: name,
+          });
+
+        } else {
+          console.log('---> Senha incorreta');
+          res.status(401).send('Senha incorreta');
+        }
+      });
+    }
+  });
+});
+
+
 
 
 app.listen(port, () => {

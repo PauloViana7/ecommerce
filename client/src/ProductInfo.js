@@ -7,12 +7,6 @@ import PaymentSecurityPolicy from './PaymentSecurityPolicy';
 
 const ProductInfo = () => {
   const [product, setProduct] = useState([]);
-
-  
-  const input = document.querySelector("#qnt")?.value;
-
-
-  console.log(input)
   
   useEffect(() => {
     const idProduct = window.location.search.replace("?", " ");

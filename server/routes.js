@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
+require('dotenv').config();
 
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
+
+router.use(cors());
 
 
 // Rota para obter todos os produtos
@@ -27,12 +39,26 @@ router.get('/products/:id', (req, res) => {
 router.post('/products', (req, res) => {
   const productData = req.body;
 
-  // Lógica para criar um novo produto no banco de dados usando os dados recebidos
-  // ...
+  console.log(productData)
 
-  // Retorna uma resposta de sucesso
-  res.send('Produto criado com sucesso!');
+  // Extrai os dados do produto do corpo da requisição
+  const { title, price, description, category, image } = productData;
+
+  // Constrói a consulta SQL de inserção
+  const query = 'INSERT INTO products (title, price, description, category, image) VALUES (?, ?, ?, ?, ?)';
+
+  // Executa a consulta SQL passando os valores como parâmetros
+  connection.query(query, [title, price, description, category, image], (err, result) => {
+    if (err) {
+      console.error('Erro ao criar um novo produto:', err);
+      res.status(500).send('Erro ao criar um novo produto');
+    } else {
+      console.log('Produto criado com sucesso!');
+      res.send('Produto criado com sucesso!');
+    }
+  });
 });
+
 
 // Rota para atualizar um produto existente pelo ID
 router.put('/products/:id', (req, res) => {

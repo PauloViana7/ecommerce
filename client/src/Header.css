@@ -67,6 +67,7 @@ ul {
   #menu a {
     color: var(--color-main-one);
     display: block;
+    font-weight: 600;
     padding: .5rem;
     left: 100px;
   }
@@ -83,6 +84,20 @@ ul {
 
   #menu b {
     font-size: 1rem;
+  }
+
+  #menu button {
+    background: none;
+    color: var(--color-main-one);
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none!important;
+    cursor: pointer;
+  }
+
+  #menu button:hover {
+    color: var(--color-main-four);
   }
 
 

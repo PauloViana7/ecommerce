@@ -4,7 +4,8 @@ import './Header.css';
 
 
 
-function App() {
+
+function Header() {
 
   const [menuActive, setMenuActive] = useState(false);
 
@@ -50,6 +51,22 @@ function App() {
     nav.classList.toggle('active', menuActive);
   }, [menuActive]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  useEffect(() => {
+    const storedData = localStorage.getItem('userId');
+  
+    if (storedData) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    setIsLoggedIn(false);
+  };
+
   return (
     <header id="header">
 
@@ -76,9 +93,11 @@ function App() {
         </button>
         <ul id="menu" role="menu">
           <li>
-            <a id="" href="Car">
-              <i className='bx bx-cart'><b>0</b></i>
+          {isLoggedIn && (
+            <a id="" href="Cart">
+              <i className='bx bx-cart'></i>
             </a>
+            )}
           </li>
           <li>
             <a id="click-mobile-home" href="/">
@@ -96,9 +115,15 @@ function App() {
             </a>
           </li>
           <li>
-            <a id="click-mobile-login" href="AuthForm">
-              Entrar{" "}
-            </a>
+            <nav id="nav">
+              {isLoggedIn ? (
+                <button onClick={handleLogout}>Sair</button>
+              ) : (
+                <a id="click-mobile-login" href="AuthForm">
+                  Entrar
+                </a>
+              )}
+            </nav>
           </li>
         </ul>
       </nav>
@@ -106,6 +131,6 @@ function App() {
   );
 }
 
-export default App;
+export default Header;
 
 
