@@ -1,0 +1,99 @@
+.submit-form {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-form  form {
+    margin: 1rem;
+    display: grid;
+    justify-items: center;
+}
+
+.submit-form  form input {
+    margin: .3rem;
+    padding: .5rem;
+    border-radius: .3rem;
+}
+
+.btn-add {
+    margin: 1rem;
+    color: var(--color-main-tree);
+    background-color: var(--color-main-five);
+    font-size: 1rem;
+    border: .1rem solid var(--color-main-five);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    cursor: pointer
+}
+
+.list-products ul {
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.list-products li {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    width: 14rem;
+    height: 20rem;
+    margin: 1rem;
+    border-radius: .5rem;
+    box-shadow: .5rem 0rem 1.5rem .5rem var(--color-main-two);
+}
+
+.list-products h3 {
+    font-size: .9rem;
+}
+
+.list-cart {
+    display: grid;
+    justify-items: center;
+    align-content: space-between;
+    padding: .5rem;
+    width: 14rem;
+    height: 20rem;
+    margin: .5rem;
+    border-radius: .5rem;
+    box-shadow: .5rem 0rem 1.5rem .5rem var(--color-main-two);
+}
+
+.list-cart b {
+    color: var(--color-main-one);
+}
+
+.list-cart img{
+    margin: .5rem auto;
+    width: 5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.list-button {
+    display: flex;
+    margin: 1rem;
+}
+
+.list-button button {
+    border: none;
+}
+
+.bxs-message-square-x {
+    position: relative;
+    left: 5rem;
+    font-size: 2.5rem;
+    color: var(--color-main-six);
+    cursor: pointer;
+}
+
+.bx-sort-up {
+    position: relative;
+    right: 5rem;
+    font-size: 2.5rem;
+    color: var(--color-main-five);
+    cursor: pointer;
+}

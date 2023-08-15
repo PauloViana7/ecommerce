@@ -3,6 +3,21 @@ const router = express.Router();
 const cors = require('cors');
 require('dotenv').config();
 
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + '-' + uniqueSuffix);
+  },
+});
+const upload = multer({ storage: storage });
+
+
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
@@ -15,40 +30,50 @@ const connection = mysql.createConnection({
 router.use(cors());
 
 
-// Rota para obter todos os produtos
 router.get('/products', (req, res) => {
-  // Lógica para buscar todos os produtos no banco de dados
-  // ...
-
-  // Retorna os produtos em formato JSON
-  res.json(products);
+  const query = 'SELECT * FROM products'; 
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar produtos:', err);
+      res.status(500).json({ error: 'Erro ao obter produtos' });
+    } else {
+      res.json(results);
+    }
+  });
 });
 
-// Rota para obter um produto específico pelo ID
+// Rota para obter um produto pelo ID
 router.get('/products/:id', (req, res) => {
   const productId = req.params.id;
 
-  // Lógica para buscar um produto específico pelo ID no banco de dados
-  // ...
+  const query = 'SELECT * FROM products WHERE id = ?';
 
-  // Retorna o produto em formato JSON
-  res.json(product);
+  connection.query(query, [productId], (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar o produto:', err);
+      res.status(500).json({ error: 'Erro ao obter o produto' });
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      } else {
+        const product = results[0];
+        res.json(product);
+      }
+    }
+  });
 });
 
-// Rota para criar um novo produto
-router.post('/products', (req, res) => {
+// criar produto
+router.post('/products', upload.single('image'), (req, res) => {
   const productData = req.body;
 
-  console.log(productData)
+  const { title, price, description, category } = productData;
+  const imageName = req.file.filename;
 
-  // Extrai os dados do produto do corpo da requisição
-  const { title, price, description, category, image } = productData;
-
-  // Constrói a consulta SQL de inserção
   const query = 'INSERT INTO products (title, price, description, category, image) VALUES (?, ?, ?, ?, ?)';
 
-  // Executa a consulta SQL passando os valores como parâmetros
-  connection.query(query, [title, price, description, category, image], (err, result) => {
+  connection.query(query, [title, price, description, category, imageName], (err, result) => {
     if (err) {
       console.error('Erro ao criar um novo produto:', err);
       res.status(500).send('Erro ao criar um novo produto');
@@ -65,22 +90,43 @@ router.put('/products/:id', (req, res) => {
   const productId = req.params.id;
   const productData = req.body;
 
-  // Lógica para atualizar um produto existente no banco de dados usando os dados recebidos
-  // ...
+  const { title, price, description, category } = productData;
 
-  // Retorna uma resposta de sucesso
-  res.send('Produto atualizado com sucesso!');
+  const query = 'UPDATE products SET title = ?, price = ?, description = ?, category = ? WHERE id = ?';
+
+  connection.query(query, [title, price, description, category, productId], (err, result) => {
+    if (err) {
+      console.error('Erro ao atualizar o produto:', err);
+      res.status(500).send('Erro ao atualizar o produto');
+    } else {
+      console.log('Produto atualizado com sucesso!');
+      res.send('Produto atualizado com sucesso!');
+    }
+  });
 });
 
-// Rota para excluir um produto pelo ID
+// Deletar produtos
 router.delete('/products/:id', (req, res) => {
   const productId = req.params.id;
 
-  // Lógica para excluir um produto pelo ID no banco de dados
-  // ...
+  const query = 'DELETE FROM products WHERE id = ?';
 
-  // Retorna uma resposta de sucesso
-  res.send('Produto excluído com sucesso!');
+  connection.query(query, [productId], (err, result) => {
+    if (err) {
+      console.error('Erro ao excluir o produto:', err);
+      res.status(500).send('Erro ao excluir o produto');
+    } else {
+      console.log('Produto excluído com sucesso!');
+      res.send('Produto excluído com sucesso!');
+    }
+  });
+});
+
+router.get('/images/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const imagePath = path.join(__dirname, 'uploads', filename);
+
+  res.sendFile(imagePath);
 });
 
 module.exports = router;

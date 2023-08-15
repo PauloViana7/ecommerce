@@ -7,7 +7,7 @@ function Home() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        fetch('http://localhost:3001/products')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(error => console.log(error));
@@ -25,7 +25,7 @@ function Home() {
                         products.map(product => (
                             <li key={product.id}>
                                 <h2>{product.title}</h2>
-                                <img src={product.image} alt={product.title}></img>
+                                <img src={'http://localhost:3001/images/' + product.image} alt={product.title}></img>
                                 {product.price && (
                                     <b>
                                         {product.price.toLocaleString('pt-br', {

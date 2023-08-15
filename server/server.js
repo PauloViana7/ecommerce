@@ -21,7 +21,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) throw err;
-  console.log('Conectado ao banco de dados MySQL');
+  console.log('Banco de Dados Ok');
 });
 
 const bcrypt = require('bcrypt');
@@ -35,7 +35,7 @@ const routes = require('./routes');
 app.use('/', routes);
 
 app.get('/', (req, res) => {
-  res.send('API está funcionando!');
+  res.send('----OK----');
 });
 
 app.use(cors());
@@ -100,5 +100,5 @@ app.post('/login', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Servidor na porta ${port}`);
+  console.log(`----Server----ON----Port: ${port}`);
 });

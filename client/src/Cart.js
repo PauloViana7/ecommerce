@@ -20,7 +20,7 @@ const Cart = () => {
     fetchProducts();
   }, []);
 
-  products.map((product) => ( console.log(product.price) ));
+  
 
   return (
     <div className='container-cart'>

@@ -10,7 +10,7 @@ const ProductInfo = () => {
   
   useEffect(() => {
     const idProduct = window.location.search.replace("?", " ");
-    fetch('https://fakestoreapi.com/products/' + idProduct)
+    fetch('http://localhost:3001/products/' + idProduct)
       .then(res => res.json())
       .then(data => setProduct(data))
       .catch(error => console.log(error));
@@ -22,7 +22,7 @@ const ProductInfo = () => {
       {product && Object.keys(product).length > 0 ? (
         <div className="product-info">
           <div className="product-image">
-            <img src={product.image} alt={product.title} />
+            <img src={'http://localhost:3001/images/' + product.image} alt={product.title} />
           </div>
           <div className="product-details">
             <h1>{product.title}</h1>
